@@ -2,4 +2,11 @@ import event
 import specialEvent
 
 class productManagerApp:
-    pass
+    def __init__(self) -> None:
+        pass
+        
+    
+def run():
+    print("Event Manager - [Seth deHaan]")
+    
+run()
