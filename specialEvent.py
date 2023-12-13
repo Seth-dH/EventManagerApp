@@ -5,6 +5,6 @@ class specialEvent(event.Event):
         super().__init__(eventID, eventLocation, eventType)
         self.__specialEventType = specialEventType
         
-    def calcEventFee(self, eventBaseCost, specialEventFee):
-        eventFee = eventBaseCost + specialEventFee
-        return eventFee + eventFee * 0.135
+    def calcEventFee(self):
+        vipEventFee = 15000000
+        return vipEventFee + vipEventFee * 0.135

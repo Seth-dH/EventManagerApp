@@ -1,9 +1,9 @@
 
 class Event:
     def __init__(self, eventID, eventLocation, eventType):
-        self.__eventID = eventID
+        self._eventID = eventID
         self.setEventLocation(eventLocation)
-        self.__eventType = eventType
+        self._eventType = eventType
         
     def getEventID(self):
         return self.__eventID
@@ -13,10 +13,10 @@ class Event:
             for char in newLocation:
                 if(char.isnumeric()):
                     raise NameError("No number permitted in newLocation variable")
-            self.__evelntLocation = newLocation
+            self._evelntLocation = newLocation
         else:
             raise NameError("No Value passed in the newLocation method variable")
         
-    def calcEventFee(self, eventBaseCost):
-        eventFee = eventBaseCost
+    def calcEventFee(self):
+        eventFee = 12000000
         return eventFee + eventFee * 0.135
