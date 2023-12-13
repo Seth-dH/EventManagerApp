@@ -17,6 +17,6 @@ class Event:
         else:
             raise NameError("No Value passed in the newLocation method variable")
         
-    def calcEventFee(self):
-        eventFee = 12000
+    def calcEventFee(self, eventBaseCost):
+        eventFee = eventBaseCost
         return eventFee + eventFee * 0.135
