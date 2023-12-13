@@ -14,8 +14,6 @@ class Event:
                 if(char.isnumeric()):
                     raise NameError("No number permitted in newLocation variable")
             self._evelntLocation = newLocation
-        else:
-            raise NameError("No Value passed in the newLocation method variable")
         
     def calcEventFee(self):
         eventFee = 12000000

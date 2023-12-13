@@ -3,10 +3,11 @@ import specialEvent
 import json
 
 class ProductManagerApp:
-    def __init__(self) -> None:
-        self.run()
+    def __init__(self):
         self._events = []
         self.loadData()
+        
+        self.run()
         
     def run(self):
         print("Event Manager - [Seth deHaan]")
@@ -25,6 +26,8 @@ class ProductManagerApp:
                     userCh = int(input())
                     if(userCh > 0 and userCh < 5):
                         break
+                    else:
+                        raise ValueError
                 except:
                     print("Invalid answer, Please try again")    
                     print()
@@ -50,12 +53,13 @@ class ProductManagerApp:
             try:
                 print("What is the event location")
                 location = input()
-                self._events.append(event.Event(eventId, location, eventType))
+                newEvent = event.Event(eventId, location, eventType)
                 break
             except:
                 print("Invalid entry, please try again")
                 print("Make sure the location is not empty, and there are no numbers in the location")
                 
+        self._events.append(newEvent)
         print('event created!')
         
     def createNewSpecialEvent(self):
@@ -84,10 +88,12 @@ class ProductManagerApp:
         totalFees = 0
         for event in self._events:
             totalFees += event.calcEventFee()
+            
+        print(f"The Total fees of all events is: ${totalFees}")
         
     def saveData(self):
-        with open ('events.json', 'w')as eventFile:
-            json.dump(eventFile, self._events, indent=2)
+        with open ('events.json', 'w') as eventFile:
+            json.dump(self._events, eventFile, indent=2)
     
     def loadData(self):
         with open('events.json', 'r') as eventFile:
