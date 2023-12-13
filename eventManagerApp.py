@@ -1,12 +1,17 @@
 import event
 import specialEvent
 
-class productManagerApp:
+class ProductManagerApp:
     def __init__(self) -> None:
-        pass
+        self.run()
         
+    def run(self):
+        print("Event Manager - [Seth deHaan]")
+        
+    def saveDataToFile(self):
+        pass
     
-def run():
-    print("Event Manager - [Seth deHaan]")
+    def loadDataFromFile(self):
+        pass
     
-run()
+projectManagerApp = ProductManagerApp()
