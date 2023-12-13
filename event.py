@@ -6,7 +6,13 @@ class Event:
         self._eventType = eventType
         
     def getEventID(self):
-        return self.__eventID
+        return self._eventID
+    
+    def getEventLocation (self):
+        return self._evelntLocation
+    
+    def getEventType(self):
+        return self._eventType
     
     def setEventLocation(self, newLocation):
         if(newLocation != None):

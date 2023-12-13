@@ -76,7 +76,7 @@ class ProductManagerApp:
             try:
                 print("What is the event location")
                 location = input()
-                self._events.append(specialEvent.specialEvent(eventId, location, eventType, specEventType))
+                self._events.append(specialEvent.SpecialEvent(eventId, location, eventType, specEventType))
                 break
             except:
                 print("Invalid entry, please try again")
@@ -92,11 +92,24 @@ class ProductManagerApp:
         print(f"The Total fees of all events is: ${totalFees}")
         
     def saveData(self):
+        readableEvents = []
+        for _event in self._events:
+            if(type(_event) == event.Event):
+                readableEvents.append([_event.getEventID(), _event.getEventLocation(), _event.getEventType()])
+            elif(type(_event) == specialEvent.SpecialEvent):
+                readableEvents.append([_event.getEventID(), _event.getEventLocation(), _event.getEventType(), _event.getSpecialEventType()])
         with open ('events.json', 'w') as eventFile:
-            json.dump(self._events, eventFile, indent=2)
+            json.dump(readableEvents, eventFile, indent=2)
     
     def loadData(self):
         with open('events.json', 'r') as eventFile:
-            self._events = json.load(eventFile)
+            eventValues = json.load(eventFile)
+            
+        for _event in eventValues:
+            if(len(_event) == 3):
+                self._events.append(event.Event(_event[0], _event[1], _event[2]))
+            elif(len(_event) == 4):
+                self._events.append(specialEvent.SpecialEvent(_event[0], _event[1], _event[2], _event[3]))
+                
     
 projectManagerApp = ProductManagerApp()

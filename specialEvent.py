@@ -1,9 +1,12 @@
 import event
 
-class specialEvent(event.Event):
+class SpecialEvent(event.Event):
     def __init__(self, eventID, eventLocation, eventType, specialEventType):
         super().__init__(eventID, eventLocation, eventType)
-        self.__specialEventType = specialEventType
+        self._specialEventType = specialEventType
+        
+    def getSpecialEventType(self):
+        return self._specialEventType
         
     def calcEventFee(self):
         vipEventFee = 15000000
